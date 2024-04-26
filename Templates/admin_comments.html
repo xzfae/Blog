@@ -1,0 +1,17 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+<section class="panel important">
+    <h2>Все комментарии</h2>
+    {% for comment in comments %}
+    <ul>
+        <li>оставлен пользователем: <b>{{ comment.user_id }}</b>; текст
+            коментария: <b>{{ comment.text }}</b>;
+            дата комментария: <b>{{ comment.date }}</b>
+            <a href="/admin/del_comment/{{ comment.id }}"><img
+                    src="{{ url_for('static', filename='img/del.png') }}"></a>
+        </li>
+    </ul>
+    {% endfor %}
+</section>
+{% endblock %}
+

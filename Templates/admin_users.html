@@ -1,0 +1,14 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+<section class="panel important">
+    <h2>Все пользователи</h2>
+    {% for user in users %}
+    <ul>
+        <li><b>{{ user.login }}</b>
+            <a href="/admin/del_user/{{ user.id }}"><img src="{{ url_for('static', filename='img/del.png') }}"></a>
+        </li>
+    </ul>
+    {% endfor %}
+</section>
+{% endblock %}
+

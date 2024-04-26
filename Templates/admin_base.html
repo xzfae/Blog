@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin panel</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/logo.png') }}" />
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/admin_style.css') }}">
+    <script src="{{ url_for('static', filename='js/ckeditor/ckeditor.js') }}"></script>
+</head>
+<body>
+
+<header role="banner">
+    <h1>Администрирование абстрактного Web-блога</h1>
+    <ul class="utilities">
+        <br>
+        <li class="home"><a href="/">На сайт</a></li>
+        <li class="logout warn"><a href="/logout">Выход</a></li>
+    </ul>
+</header>
+
+<nav role='navigation'>
+    <ul class="main">
+        <li class="write"><a href="/admin">Добавить пост</a></li>
+        <li class="edit"><a href="/admin/posts">Посты</a></li>
+        <li class="users"><a href="/admin/users">Пользователи</a></li>
+        <li class="comments"><a href="/admin/comments">Комментарит</a></li>
+    </ul>
+</nav>
+
+<main role="main">
+    {% block content %}
+    {% endblock %}
+</main>
+
+</body>
+</html>

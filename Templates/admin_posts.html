@@ -1,0 +1,15 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+<section class="panel important">
+    <h2>Все посты</h2>
+    {% for post in posts %}
+    <ul>
+        <li><b>{{ post.title }}</b> опубликованный <b>{{ post.date }}</b>
+            <a href="/admin/edit_post/{{ post.id }}"><img src="{{ url_for('static', filename='img/edit.png') }}"></a>
+            <a href="/admin/del_post/{{ post.id }}"><img src="{{ url_for('static', filename='img/del.png') }}"></a>
+        </li>
+    </ul>
+    {% endfor %}
+</section>
+{% endblock %}
+

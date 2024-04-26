@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/form_style.css') }}">
+
+</head>
+<body>
+<div class="login-page">
+    <div class="form">
+        <form class="login-form" method="POST">
+            <input type="text" placeholder="логин" name="login"/>
+            <input type="password" placeholder="пароль" name="password"/>
+            <button>Войти</button>
+            {% if message %}
+            <p class="message">{{ message }}</p>
+            {% endif %}
+            {% if request.args.get('message') %}
+            <p class="message">{{ request.args.get('message') }}</p>
+            {% endif %}
+        </form>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='js/jquery-3.6.0.min.js') }}"></script>
+
+</body>
+</html>

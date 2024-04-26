@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="blog-post">
+    <h1 class="blog-title">{{ post.title }}</h1>
+    <h2 class="date">{{ post.date }}</h2>
+    <p class="blog-content">{{ post.text | safe }}</p>
+</div>
+{% if session['login'] %}
+<div class="blog-post">
+    <h1 class="blog-title">Оставьте комментарий</h1>
+    <form method="post">
+        <textarea name="comment"></textarea>
+        <input type="submit" value="Добавить">
+    </form>
+</div>
+{% endif %}
+
+{% for comment in comments %}
+<div class="blog-post">
+    <h1 class="blog-title">{{ comment.user_id }}</h1>
+    <h2 class="date">{{ comment.date }}</h2>
+    <p class="blog-content">{{ comment.text }}</p>
+</div>
+{% endfor %}
+
+{% endblock %}

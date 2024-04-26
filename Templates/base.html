@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="shortcut icon"
+          href="{{ url_for('static', filename='img/logo.png') }}"/>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/fonts.css') }}">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/jquery-3.6.0.min.js') }}"></script>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<header>
+    <h1 class="logo">Web-блог</h1>
+</header>
+
+<nav>
+    <ul>
+        <li class="nav-item"><a href="/">Главная</a></li>
+        <li class="nav-item"><a href="/about">Об авторах</a></li>
+    </ul>
+    <div class="menu-bar">Menu
+        <span class="hamburger-icon"><i class="fa fa-bars"></i></span>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="section">
+        <div class="col span_2_of_3">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <aside class="col span_1_of_3">
+
+            {% if not session['login'] %}
+            <div class="side-post">
+                <p class="side-content">Рекомендуем Вам авторизоваться на
+                    сайте</p>
+                <a href="/admin" class="button">Вход</a>
+                <a href="/registration" class="button">Регистрация</a>
+            </div>
+            {% endif %}
+            {% if session['login'] %}
+            <div class="side-post">
+                <p class="side-content">Здравствуйте, {{ session['login']}}</p>
+                {% if session['role'] == 'admin' %}
+                <a href="/admin" class="button">Админка</a>
+                {% endif %}
+                <a href="/logout" class="button">Выход</a>
+            </div>
+            {% endif %}
+
+            <div class="side-post">
+                <a href="https://codepen.io/"><img
+                        src="{{ url_for('static', filename='img/codepen.jpg') }}"
+                        alt="img"></a>
+                <p class="side-content">Все шаблоны брали с сайта <a href="https://codepen.io/">Codepen.io</a>. Сайт Нам очень понравился.</p>
+            </div>
+
+        </aside>
+    </div>
+</div>
+<!-- partial -->
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

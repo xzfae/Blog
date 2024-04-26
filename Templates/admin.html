@@ -1,0 +1,31 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+<section class="panel important">
+    {% if message %}
+    <h2>Сообщение</h2>
+    <ul>
+        <li>{{ message }}</li>
+    </ul>
+    {% endif %}
+</section>
+
+<section class="panel important">
+    <h2>Добавить новый пост</h2>
+    <form method="post">
+        <div class="twothirds">
+            Заголовок поста:<br/>
+            <input type="text" name="post_title" size="40"/><br/><br/>
+            Текст поста:<br/>
+            <textarea name="post_text" rows="15"
+                      cols="67"></textarea>
+            <script>CKEDITOR.replace('post_text');</script>
+            <br/>
+        </div>
+        <div>
+            <input type="submit" name="submit" value="Добавить"/>
+        </div>
+        </div>
+    </form>
+</section>
+{% endblock %}
+

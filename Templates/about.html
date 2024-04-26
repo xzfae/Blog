@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="blog-post">
+    <h1 class="blog-title">Об авторах</h1>
+    <p class="blog-content">Это секретная информация!!!
+        <br>
+        <img src="{{ url_for('static', filename='img/ananimus.jpg') }}" alt="">
+        <br>
+    </p>
+</div>
+{% endblock %}
+

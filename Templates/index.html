@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for post in posts %}
+<div class="blog-post">
+    <h1 class="blog-title">{{ post.title }}</h1>
+    <h2 class="date">Опубликованно {{ post.date }}</h2>
+    <p class="blog-content">{{ post.text[:300] | safe}}</p>
+    <a href="/post/{{ post.id }}" class="post-link">Читать полностью...</a>
+</div>
+{% endfor %}
+{% endblock %}
